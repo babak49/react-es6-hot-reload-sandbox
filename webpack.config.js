@@ -2,15 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-	devtool: 'eval',
+	devtool: 'source-map',
 	entry: [
-		"webpack-dev-server/client?http://localhost:4000",
-		"webpack/hot/only-dev-server",
 		path.resolve(__dirname, 'src/index.js')
 	],
 	output: {
 		path: path.resolve(__dirname, 'example/build/'),
-		publicPath: 'example/build/',
+		publicPath: 'http://localhost:4000/example/build/',
 		filename: 'index.js'
 	},
 	resolve: {
@@ -25,10 +23,9 @@ module.exports = {
 				test: /(\.js$|\.jsx$)/,
 				loaders: [
 					'eslint',
-					'source-map',
+					'source-map'
 				],
 				include: path.resolve(__dirname, 'src/'),
-				exclude: /node_modules/
 			}
 		],
 		loaders: [
@@ -38,11 +35,6 @@ module.exports = {
 					'react-hot',
 					'babel?presets[]=react,presets[]=es2015,presets[]=stage-0'
 				],
-				//query: {
-				//	// cacheDirectory: true,
-				//	presets: ['react', 'es2015', 'stage-0']
-				//},
-				// include: path.resolve(__dirname, 'src/'),
 				exclude: /node_modules/
 			},
 			{

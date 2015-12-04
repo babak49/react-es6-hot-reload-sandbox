@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactDataListSelect } from './component';
+import { HotReloadComponent } from './component';
 
 React.render(
-  <ReactDataListSelect/>,
+  <HotReloadComponent />,
   document.getElementById('react-data-list')
 );
