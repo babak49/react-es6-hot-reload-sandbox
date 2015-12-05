@@ -1,5 +1,5 @@
 {
-  "name": "react-es6-hot-reload-sandcastle",
+  "name": "react-es6-hot-reload-sandbox",
   "version": "1.0.0",
   "description": "ES6, React, Hot Reload, Dev server",
   "scripts": {
