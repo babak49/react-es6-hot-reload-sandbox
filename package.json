@@ -2,14 +2,19 @@
   "name": "react-es6-hot-reload-sandbox",
   "version": "1.0.0",
   "description": "ES6, React, Hot Reload, Dev server",
+  "main": "./dist/index.js",
   "scripts": {
     "init": "npm install",
     "start": "npm run clean; webpack",
     "start:hard": "rm -rf ./node_modules; npm run init; npm run start",
     "watch": "npm run start; webpack-dev-server --hot --inline",
-    "clean": "rm -rf ./example/build"
+    "clean": "rm -rf ./example/build",
+    "prepublish": "rm -f ./index.js; webpack --config webpack.config.dist.js"
   },
   "author": "Bogdan Bodnaruk",
+  "contributors": [
+    "Bogdan Bodnaruk <babak.47031@gmail.com>"
+  ],
   "repository": "https://github.com/babak49/react-es6-hot-reload-sandbox",
   "license": "ISC",
   "dependencies": {
@@ -38,7 +43,16 @@
     "sass-loader": "^3.1.2",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.9",
+    "webpack": "^1.12.13",
     "webpack-dev-server": "^1.10.1"
-  }
+  },
+  "npmName": "react-es6-hot-reload-sandbox",
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": [
+        "*.js"
+      ]
+    }
+  ],
 }

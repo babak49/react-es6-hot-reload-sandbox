@@ -16,13 +16,7 @@ module.exports = {
 		modulesDirectories: ['node_modules'],
 		extensions: ['', '.js', '.scss', '.jsx']
 	},
-	plugins: [
-		new webpack.DefinePlugin({
-			'process.env': {
-				'NODE_ENV': JSON.stringify('production')
-			}
-		})
-	],
+	plugins: [],
 	module: {
 		preLoaders: [
 			{
