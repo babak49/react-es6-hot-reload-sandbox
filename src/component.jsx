@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
-import './styles';
+import React from 'react';
+import './styles.scss';
 
-export class HotReloadComponent extends Component {
-  render() {
-    return (
-      <div className="test">
-        <div style={{ color: 'green' }}>
-          This is hot reload test
-        </div>
-      </div>
-    );
-  }
-}
+export const HotReloadComponent = () => (
+  <div className="test">
+    <div style={{ color: 'green' }}>
+      This is hot reload test
+    </div>
+  </div>
+);
