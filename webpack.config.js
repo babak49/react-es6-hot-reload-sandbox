@@ -2,13 +2,16 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-	devtool: 'source-map',
+	devtool: 'cheap-module-source-map',
 	entry: [
-		path.resolve(__dirname, 'src/index.js')
+		'react-hot-loader/patch',
+		'webpack-dev-server/client?http://localhost:4000',
+		'webpack/hot/only-dev-server',
+		'./src/index.js'
 	],
 	output: {
-		path: path.resolve(__dirname, 'example/build/'),
-		publicPath: 'http://localhost:4000/example/build/',
+		path: path.resolve(__dirname, '/example'),
+		publicPath: 'http://localhost:4000/example',
 		filename: 'index.js'
 	},
 	resolve: {
@@ -16,7 +19,17 @@ module.exports = {
 		modulesDirectories: ['node_modules'],
 		extensions: ['', '.js', '.scss', '.jsx']
 	},
-	plugins: [],
+	devServer: {
+		host: 'localhost',
+		contentBase: 'example',
+		port: '4000',
+		hot: true,
+		inline: true,
+		historyApiFallback: true
+	},
+	plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	],
 	module: {
 		preLoaders: [
 			{
@@ -31,10 +44,7 @@ module.exports = {
 		loaders: [
 			{
 				test: /(\.js$|\.jsx$)/,
-				loaders: [
-					'react-hot',
-					'babel?presets[]=react,presets[]=es2015,presets[]=stage-0'
-				],
+				loader: 'babel',
 				exclude: /node_modules/
 			},
 			{
@@ -48,10 +58,6 @@ module.exports = {
 				exclude: /node_modules/
 			}
 		]
-	},
-	devServer: {
-		host: 'localhost',
-		port: '4000'
 	},
 	eslint: {
 		configFile: '.eslintrc',
