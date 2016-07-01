@@ -1,8 +1,8 @@
 import React from 'react';
-import './styles.scss';
+import css from './styles.scss';
 
 export const HotReloadComponent = () => (
-  <div className="test">
+  <div className={css.test}>
     <div style={{ color: 'green' }}>
       This is hot reload test
     </div>

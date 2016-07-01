@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
 	devtool: 'cheap-module-source-map',
@@ -51,13 +53,14 @@ module.exports = {
 				test: /\.scss$/,
 				loaders: [
 					'style',
-					'css',
-					'autoprefixer-loader?browsers=last 2 version',
-					'sass?outputStyle=compressed',
+					'css?modules&localIdentName=[local]-[hash:base64:6]!postcss',
 				],
 				exclude: /node_modules/
 			}
 		]
+	},
+	postcss: function () {
+		return [precss, autoprefixer];
 	},
 	eslint: {
 		configFile: '.eslintrc',
